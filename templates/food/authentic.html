@@ -1,0 +1,199 @@
+{% extends 'food/base.html' %}
+{% load static %}
+
+    {% block title %}Swaad Sadan-Authentic{% endblock title %}
+
+ {% block content %}
+
+    
+    <!-- Banner Section -->
+    <section class="banner-section banner-four">
+		<div class="banner-carousel strnix-carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "768" :{ "items" : "1" } , "1000":{ "items" : "1" }}}'>
+			<!-- Slide Item -->
+			<div class="slide-item">
+				<div class="image-layer" style="background-image:url('{% static 'food/images/banner/south-banner.jpg' %}')"></div>
+
+				<div class="auto-container">
+					<div class="content-box">
+                        <div class="content">
+                            <div class="inner">
+        						<h1>South Indian</h1>
+                                <div class="text">For Controling Your Energy Production ullamco laboris nisut aliquips comodes consequat. Duis aute irure dolor reprehenderit.</div>
+                                <form class="search">
+                                    <input type="text" name="search" placeholder="Search.." >
+                                </form>
+                            </div>
+                        </div>
+					</div>  
+				</div>
+			</div>
+
+			<!-- Slide Item -->
+            <div class="slide-item">
+                <div class="image-layer" style="background-image:url('{% static 'food/images//banner/punjabi-banner.jpg' %}')"></div>
+
+                <div class="auto-container">
+                    <div class="content-box">
+                        <div class="content">
+                            <div class="inner">
+                                <h1>Punjabi <a href=""></a></h1>
+                                <div class="text">For Controling Your Energy Production ullamco laboris nisut aliquips comodes consequat. Duis aute irure dolor reprehenderit.</div>
+                                <form class="search">
+                                    <input type="text" name="search" placeholder="Search..">
+                                </form>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+
+            <!-- Slide Item -->
+            <div class="slide-item">
+                <div class="image-layer" style="background-image:url({% static 'food/images/banner/gujarati-banner.jpg' %})"></div>
+
+                <div class="auto-container">
+                    <div class="content-box">
+                        <div class="content">
+                            <div class="inner">
+                                <h1>Gujarati</h1>
+                                <div class="text">For Controling Your Energy Production ullamco laboris nisut aliquips comodes consequat. Duis aute irure dolor reprehenderit.</div>
+                                <form class="search">
+                                    
+                                    <input type="text" name="search" placeholder="Search..">
+                                </form>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+
+		</div>
+    </section>
+    <!--End Banner Section -->
+
+<!-- Authentic Food Section -->
+   
+<section class="services-section-four">
+
+    <div class="auto-container">
+        <div class="sec-title centered hydro-theme">
+           
+            <h2>Authentic Food</h2>
+            
+        </div>
+
+        <div class="row clearfix">
+            <!--Service Block-->
+            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0ms"  data-wow-duration="2000ms">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <figure class="image"><img src="{% static 'food/images/gujrati.jpg' %}" alt=""></figure>
+                        
+                    </div>
+                    <div class="title-box">
+                        <div class="title-inner">
+                            <!-- <div class="icon"><span class="flaticon-settings"></span></div> -->
+                            <h3><a href="/gujProductView">Gujarati</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Service Block-->
+            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="300ms"  data-wow-duration="2000ms">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <figure class="image"><img src="{% static 'food/images/South2.jpg' %}" alt=""></figure>
+                        
+                    </div>
+                    <div class="title-box">
+                        <div class="title-inner">
+                            <!-- <div class="icon"><span><img src="images/south.ico" alt=""></span></div> -->
+                            <h3><a href="/southProduct">South Indian</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Service Block-->
+            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms"  data-wow-duration="2000ms">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <figure class="image"><img src="{% static 'food/images/punjabi.jpg' %}" alt=""></figure>
+                       
+                    </div>
+                    <div class="title-box">
+                        <div class="title-inner">
+                            <!-- <div class="icon"><span class="flaticon-solar-energy-4"></span></div> -->
+                            <h3><a href="/punjabiProduct">Punjabi</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Service Block-->
+            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0ms"  data-wow-duration="2000ms">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <figure class="image"><img src="{% static 'food/images/Rajsthani1.jpg' %}" alt=""></figure>
+                        
+                    </div>
+                    <div class="title-box">
+                        <div class="title-inner">
+                            <!-- <div class="icon"><span class="flaticon-water-drop"></span></div> -->
+                            <h3><a href="/rajsthaniProduct">Rajasthani</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Service Block-->
+            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="300ms"  data-wow-duration="2000ms">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <figure class="image"><img src="{% static 'food/images/indian-street-food.jpg' %}" alt=""></figure>
+                        
+                    </div>
+                    <div class="title-box">
+                        <div class="title-inner">
+                            <!-- <div class="icon"><span class="flaticon-save"></span></div> -->
+                            <h3><a href="/indianStreetProduct">Indian Street Food</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Service Block-->
+            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms"  data-wow-duration="2000ms">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <figure class="image"><img src="{% static 'food/images/chinesse.jpg' %}" alt=""></figure>
+                        
+                    </div>
+                    <div class="title-box">
+                        <div class="title-inner">
+                            <!-- <div class="icon"><span class="flaticon-chimney-1"></span></div> -->
+                            <h3><a href="/chinesseProduct">Chaineese</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+
+ 
+</section>
+{% endblock %}
+
+   
+
+ 
+
+
+
+
+
+
+

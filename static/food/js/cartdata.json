@@ -1,0 +1,28 @@
+{
+    "items": [ 
+        {
+            "item-name":"dal-dhoKli",
+            "img-link":"food/images/Gujarati/dal-dhokli.jpg",
+            "description":"items ",
+            "price":100,
+            "quantity":5
+
+        },
+        {
+            "item-name":"dhokla",
+            "img-link":"food/images/Gujarati/dhokla.jpg",
+            "description":"items ",
+            "price":100,
+            "quantity":4
+
+        },
+        {
+            "item-name":"fafda",
+            "img-link":"food/images/Gujarati/fafda.jpg",
+            "description":"items ",
+            "price":100,
+            "quantity":5
+
+        }
+    ]
+}

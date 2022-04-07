@@ -1,0 +1,337 @@
+{% extends 'food/base.html' %}
+{% load static %}
+
+
+
+
+    {% block content %}
+    
+    
+    <!-- End Main Header -->
+    
+    <!--Search Popup-->
+    <!-- <div id="search-popup" class="search-popup">
+        <div class="close-search theme-btn"><span class="flaticon-cancel"></span></div>
+        <div class="popup-inner">
+            <div class="overlay-layer"></div>
+            <div class="search-form">
+                <form method="post" action="index.html">
+                    <div class="form-group">
+                        <fieldset>
+                            <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required >
+                            <input type="submit" value="Search Now!" class="theme-btn">
+                        </fieldset>
+                    </div>
+                </form>
+                
+                <br>
+                <h3>Recent Search Keywords</h3>
+                <ul class="recent-searches">
+                    <li><a href="#">Finance</a></li>
+                    <li><a href="#">Idea</a></li>
+                    <li><a href="#">Service</a></li>
+                    <li><a href="#">Growth</a></li>
+                    <li><a href="#">Plan</a></li>
+                </ul>
+            
+            </div>
+            
+        </div>
+    </div> -->
+    
+    
+    <!-- Banner Section -->
+    <section class="banner-section banner-four">
+        <div class="banner-carousel strnix-carousel owl-theme owl-carousel"
+        data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "768" :{ "items" : "1" } , "1000":{ "items" : "1" }}}'>
+        <!-- Slide Item -->
+        <div class="slide-item">
+            <div class="image-layer" style="background-image:url('{% static 'food/images/banner/banner-1.jpg' %}')"></div>
+            
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="content">
+                        <div class="inner">
+                            <h1>Your Moms Kitchan In Every State</h1>
+                            <div class="text">For Controling Your Energy Production ullamco laboris nisut
+                                aliquips comodes consequat. Duis aute irure dolor reprehenderit.</div>
+                                <form class="search">
+                                    <input type="text" name="search" placeholder="Search..">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide Item -->
+            <div class="slide-item">
+                <div class="image-layer" style="background-image:url('{% static 'food/images/banner/banner-2.jpg' %}')"></div>
+                
+                <div class="auto-container">
+                    <div class="content-box">
+                        <div class="content">
+                            <div class="inner">
+                                <h1>Desire meets a new Food</h1>
+                                <div class="text">For Controling Your Energy Production ullamco laboris nisut
+                                        aliquips comodes consequat. Duis aute irure dolor reprehenderit.</div>
+                                    <form class="search">
+                                        <input type="text" name="search" placeholder="Search..">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide Item -->
+                <div class="slide-item">
+                    <div class="image-layer" style="background-image:url('{% static 'food/images/banner/banner-3.jpg' %}')"></div>
+                    
+                    <div class="auto-container">
+                        <div class="content-box">
+                            <div class="content">
+                                <div class="inner">
+                                    <h1>Eating is also a responsible work.</h1>
+                                    <div class="text">For Controling Your Energy Production ullamco laboris nisut
+                                        aliquips comodes consequat. Duis aute irure dolor reprehenderit.</div>
+                                        <form class="search">
+                                            
+                                            <input type="text" name="search" placeholder="Search..">
+                                        </form>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <!--End Banner Section -->
+
+        
+        <!--Authentic Food Section-->
+        <section class="services-section-four">
+
+            <div class="auto-container">
+                <div class="sec-title centered hydro-theme">
+                    
+                    <a href="authentic.html">
+                        <h2>Authentic Food</h2>
+                    </a>
+                    
+                </div>
+                
+                <div class="row clearfix">
+                    <!--Service Block-->
+                    <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0ms"
+                    data-wow-duration="2000ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><img src="{% static 'food/images/gujrati.jpg' %}" alt=""></figure>
+                            
+                        </div>
+                        <div class="title-box">
+                            <div class="title-inner">
+                                <!-- <div class="icon"><span class="flaticon-settings"></span></div> -->
+                                <h3><a href="/gujProductView">Gujarati</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--Service Block-->
+                <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="300ms"
+                        data-wow-duration="2000ms">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <figure class="image"><img src="{% static 'food/images/South2.jpg' %}" alt=""></figure>
+
+                            </div>
+                            <div class="title-box">
+                                <div class="title-inner">
+                                    <!-- <div class="icon"><span><img src="images/south.ico" alt=""></span></div> -->
+                                    <h3><a href="/southProduct">South Indian</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Service Block-->
+                    <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms"
+                    data-wow-duration="2000ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><img src="{% static 'food/images/punjabi.jpg' %}" alt=""></figure>
+                            
+                        </div>
+                        <div class="title-box">
+                            <div class="title-inner">
+                                <!-- <div class="icon"><span class="flaticon-solar-energy-4"></span></div> -->
+                                    <h3><a href="/punjabiProduct">Punjabi</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+                
+            </div>
+        </section>
+        
+        
+        
+        
+        <!--Restaurants logo Section-->
+        <section class="recent-projects-two">
+            <div class="auto-container">
+                <div class="sec-title hydro-theme">
+                    
+                    <h2>Restraurants</h2>
+                    
+                </div>
+                <div class="mixit-gallery">
+                    <div class="filters clearfix">
+                        <ul class="filter-tabs filter-btns clearfix">
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                    <div class="filter-list row clearfix">
+                        
+                        
+                        
+                        
+                        <!--Restaurants logo Block-->
+                        <div class="project-block-two mix all solar residential col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    <div class="image">
+                                        <img src="{% static 'food/images/Gordhan.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        
+                        
+
+                        <!--Restaurants logo Block-->
+                        <div class="project-block-two mix all solar  residential col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    <div class="image">
+                                        <img src="{% static 'food/images/dominos.svg.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Restaurants logo Block-->
+                        <div class="project-block-two mix all solar eco col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    <div class="image">
+                                        <img src="{% static 'food/images/sankalp.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!--Restaurants logo Block-->
+                        <div
+                            class="project-block-two mix all construction residential col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    <div class="image">
+                                        <img src="{% static 'food/images/lapinoz.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </section>
+        
+        
+        
+        <!--Testimonial Section-->
+        <section class="testimonial-section-three">
+            <div class="auto-container">
+                <div class="sec-title centered hydro-theme">
+                    <div class="upper-text">For Controling Your Energy Production</div>
+                    <h2>What Clients Saying</h2>
+                    <div class="bottom-dots clearfix">
+                        <span class="dot line-dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                
+                <div class="content-box">
+                    <div class="history-carousel strnix-carousel owl-theme owl-carousel"
+                    data-options='{"loop": true, "margin": 30, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 500, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "1" }, "768" :{ "items" : "1" }, "800":{ "items" : "1" }, "1024":{ "items" : "1" }}}'>
+                    <!--Slide-->
+                    <div class="slide-item">
+                        <div class="inner">
+                            <div class="testi-thumb">
+                                <img src="{% static 'food/images/clients/author-thumb-1.jpg' %}" alt="">
+                                <span class="quote-icon left flaticon-blocks-with-angled-cuts"></span>
+                                <span class="quote-icon right flaticon-straight-quotes"></span>
+                            </div>
+                            <div class="content">
+                                <div class="text">This cozy restaurant has left the best impressions! Hospitable hosts, delicious dishes, beautiful presentation, wide wine list and wonderful dessert. I recommend to everyone! I would like to come back here again and again.
+                                </div>
+                            </div>
+                            <div class="info"><span>Nihir Patel</span></div>
+                        </div>
+                    </div>
+                    <!--Slide-->
+                    <div class="slide-item">
+                        <div class="inner">
+                            <div class="testi-thumb">
+                                <img src="{% static 'food/images/clients/author-thumb-1.jpg' %}" alt="">
+                                <span class="quote-icon left flaticon-blocks-with-angled-cuts"></span>
+                                <span class="quote-icon right flaticon-straight-quotes"></span>
+                            </div>
+                            <div class="content">
+                                <div class="text">It’s a great experience. The ambiance is very welcoming and charming. Amazing wines, food and service. Staff are extremely knowledgeable and make great recommendations.</div>
+                                <div class="info"><span>Darshil Patel</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Slide-->
+                        <div class="slide-item">
+                            <div class="inner">
+                                <div class="testi-thumb">
+                                    <img src="{% static 'food/images/clients/author-thumb-1.jpg' %}" alt="">
+                                    <span class="quote-icon left flaticon-blocks-with-angled-cuts"></span>
+                                    <span class="quote-icon right flaticon-straight-quotes"></span>
+                                </div>
+                                <div class="content">
+                                    <div class="text"><h2><b>FATAFAT PTAVO KAM.</b></h2></div>
+                                    <div class="info"><span>Preet Patel</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        
+       
+    
+    
+    {% endblock content %}

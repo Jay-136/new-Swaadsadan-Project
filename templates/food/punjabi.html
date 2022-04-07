@@ -1,0 +1,59 @@
+{% extends 'food/base.html' %}
+{% load static %}
+{% static 'images' as baseURL %}
+
+{% block title %}Swaad Sadan-Punjabi{% endblock title %}
+
+{% block content %}
+
+    <!-- Banner Section -->
+    <section class="banner-section banner-four">
+        <div class="banner-carousel strnix-carousel owl-theme owl-carousel"
+            data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "768" :{ "items" : "1" } , "1000":{ "items" : "1" }}}'>
+            
+            <!-- Slide Item -->
+            <div class="slide-item">
+                <div class="image-layer" style="background-image:url('{% static 'food/images/banner/punjabi-banner.jpg' %}')"></div>
+                
+                <div class="auto-container">
+                    <div class="content-box">
+                        <div class="content">
+                            <div class="inner">
+                                <h1>Punjabi</h1>
+                                <div class="text">For Controling Your Energy Production ullamco laboris nisut aliquips comodes consequat. Duis aute irure dolor reprehenderit.</div>
+                                <form class="search">
+                                    <input type="text" name="search" placeholder="Search.." >
+                                </form>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>    
+    </div>
+    </section>
+    <!--End Banner Section -->
+    <div class="wrapper">
+        <div class="title">
+            <h4>Punjabi Menu</h4>
+        </div>
+        <div class="menu">
+            {% for pprod in pprods %}
+            <div class="single-menu">
+                <img src="{{pprod.img.url}}" alt="">
+                <div class="menu-content">
+                    <h4>{{pprod.name}}</h4>
+                    <span>₹ {{pprod.price}}</span>
+                    <p>{{pprod.desc}}</p>
+                    <span>
+                        <p><button type="submit" class="btn btn-outline-danger">Add To Cart</button></p>
+                    </span>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div> 
+
+{% endblock %}
+

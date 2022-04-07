@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+{% comment %} {% extends 'food/base.html' %} {% endcomment %}
+{% load static %}
+{% static 'images' as baseURL %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Swaad sadan - cart Page</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: ['Open+Sans:300,400,600,700,800', 'Poppins:300,400,500,600,700,800'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+    <!-- Stylesheets -->
+    <link href=" {% static 'food/css/bootstrap.css' %} " rel="stylesheet">
+    <link href="{% static 'food/css/style.css' %}" rel="stylesheet">
+    <!-- Color File -->
+    <link href="{% static 'food/css/color.css' %}" rel="stylesheet">
+    <!-- Responsive File -->
+    <link href="{% static 'food/css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+    <link rel="shortcut icon" href="{% static 'food/css/images/favicon.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'food/css/images/favicon.png' %}" type="image/x-icon">
+
+    <!-- Responsive Settings -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+<style>
+    body {
+    background: white;
+    min-height: 100vh;
+    vertical-align: middle;
+    display: flex;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold
+}
+
+.title {
+    margin-bottom: 5vh
+}
+
+.card {
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent
+}
+
+@media(max-width:767px) {
+    .card {
+        margin: 3vh auto
+    }
+}
+
+.cart {
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem
+}
+
+@media(max-width:767px) {
+    .cart {
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem
+    }
+}
+
+.summary {
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65)
+}
+
+@media(max-width:767px) {
+    .summary {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem
+    }
+}
+
+.summary .col-2 {
+    padding: 0
+}
+
+.summary .col-10 {
+    padding: 0
+}
+
+.row {
+    margin: 0;
+}
+
+.title b {
+    font-size: 1.5rem
+}
+
+.main {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%
+}
+
+.col-2,
+.col {
+    padding: 0 1vh
+}
+
+a {
+    padding: 0 1vh
+}
+
+.close {
+    margin-left: auto;
+    font-size: 0.7rem
+}
+
+img {
+    width: 3.5rem
+}
+
+.back-to-shop {
+    margin-top: 4.5rem
+}
+
+h5 {
+    margin-top: 4vh
+}
+
+hr {
+    margin-top: 1.25rem
+}
+
+form {
+    padding: 2vh 0
+}
+
+select {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+.btn {
+    background-color: #000;
+    border-color: #000;
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0
+}
+
+.btn:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    /* -webkit-user-select: none; */
+    transition: none
+}
+
+.btn:hover {
+    color: white
+}
+
+a {
+    color: black
+}
+
+a:hover {
+    color: black;
+    text-decoration: none
+}
+
+#code {
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center
+}
+.qtybtn{
+    width: 15px;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.qty{
+   min-width: 30px;
+   padding:3px 10px; 
+
+}
+</style>
+
+<body>
+
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="icon"></div>
+        </div>
+
+        <!-- Main Header -->
+        <header class="main-header header-style-four">
+
+            <!-- Header Upper -->
+            <div class="header-main-box">
+                <div class="header-upper">
+                    <div class="auto-container">
+                        <div class="inner clearfix">
+                            <!--Logo-->
+                            <div class="logo-box">
+                                <!-- <div class="logo"><a href="index.html" title="Strnix - Green Energy HTML Template"><img
+                                            src="images/logo1.jpg" alt="Strnix - Green Energy HTML Template"
+                                            title="Strnix - Green Energy HTML Template"></a></div> -->
+                            </div>
+
+                            <!--Social-->
+                            <div class="social">
+                                <ul class="social-links clearfix">
+                                    <li><a style="color: #000;" href="#"><span><i
+                                                    class="fa-solid fa-user"></i></span></a></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="nav-outer clearfix">
+                                <!--Mobile Navigation Toggler-->
+                                <div class="mobile-nav-toggler"><span class="icon flaticon-menu-1"></span></div>
+
+                                <!-- Main Menu -->
+                                <nav class="main-menu navbar-expand-md navbar-light">
+                                    <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                        <ul class="navigation clearfix">
+                                            <li><a style="text-decoration:none; color: black;"
+                                                    href="/authentic">Authentic Food</a>
+
+                                            </li>
+                                            <li class="dropdown"><a style="text-decoration:none; color: black;"
+                                                    href="about.html">Restaurants</a>
+                                            </li>
+                                            <li><a style="text-decoration:none; color: black;"
+                                                href="restaurant-login.html">Add
+                                                Restaurant</a></li>
+                                        <li class="dropdown"><a style="text-decoration:none; color: black;"
+                                                href="login.html">Log
+                                                in</a>
+                                
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--End Header Upper-->
+
+            <!-- Sticky Header  -->
+            <div class="sticky-header">
+                <div class="auto-container clearfix">
+                    <!--Logo-->
+                    <!-- <div class="logo pull-left">
+                        <a href="index.html" title=""><img src="images/sticky-logo-4.png" alt="" title=""></a>
+                    </div> -->
+                    <!--Right Col-->
+                    <div class="pull-right">
+                        <!-- Main Menu -->
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav><!-- Main Menu End-->
+                    </div>
+                </div>
+            </div><!-- End Sticky Menu -->
+
+            <!-- Mobile Menu  -->
+            <div class="mobile-menu">
+                <div class="menu-backdrop"></div>
+                <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
+
+                <nav class="menu-box">
+                    <div class="nav-logo"><a href="/index"><img src="{% static 'food/images/nav-logo.png' %}" alt="" title=""></a></div>
+                    <div class="menu-outer">Here Menu Will Come Automatically Via Javascript / Same Menu as in Header
+                    </div>
+                    <!-- Social Links -->
+                    <div class="social-links">
+                        <ul class="clearfix">
+                            <li><a style="color: black;" href="#"><span><i
+                                            class="fa-solid fa-user"></i></span></a></li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="card">
+            <div class="row">
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col">
+                                <h4><b>Shopping Cart</b></h4>
+                            </div>
+                            <div class="col align-self-center text-right text-muted">3 items</div>
+                        </div>
+                    </div>
+                    <!-- <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                            <div class="col">
+                                <div class="row text-muted">Shirt</div>
+                                <div class="row">Cotton T-shirt</div>
+                            </div>
+                            <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
+                            <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                        </div>
+                    </div> -->
+                    <div class="item-column">
+                        <!-- <div class="row main align-items-center">
+                            <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
+                            <div class="col">
+                                <div class="row text-muted">Shirt</div>
+                                <div class="row">Cotton T-shirt</div>
+                            </div>
+                            <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
+                            <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                        </div> -->
+                    </div>
+                    <!-- <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"></div>
+                            <div class="col">
+                                <div class="row text-muted">Shirt</div>
+                                <div class="row">Cotton T-shirt</div>
+                            </div>
+                            <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
+                            <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                        </div>
+                    </div> -->
+                    <div class="back-to-shop"><a href="/authentic">&leftarrow;</a><span class="text-muted">Back to Menu</span>
+                    </div>
+                </div>
+                <div class="col-md-4 summary">
+                    <div>
+                        <h5><b>Summary</b></h5>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;">ITEMS 3</div>
+                        <div class="col text-right" id="subtotal-amount">&#8377; 132.00</div>
+                    </div>
+                    <form>
+                        <p>SHIPPING</p> <select>
+                            <option class="text-muted" id="delivery-amount">Standard-Delivery- &#8377;5.00</option>
+                        </select>
+                        <p>GIVE CODE</p> <input id="code" placeholder="Enter your code">
+                    </form>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right" id="total-amount">&#8377; 137.00</div>
+                    </div> <button class="btn">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+
+
+
+        <!-- Main Footer -->
+        <footer class="main-footer footer-style-four" >
+
+          
+
+            <!--Widgets Section-->
+            <div class="widgets-section">
+                <div class="auto-container">
+                    <div class="row clearfix">
+
+                        <!--Column-->
+                        <div class="footer-column col-lg-3 col-md-5 col-sm-12" style="float: right;">
+                            <div class="footer-widget info-widget" >
+                                <div class="widget-title">
+                                    <h3>Contact Us</h3>
+                                </div>
+                                <div class="info">
+                                    <!--Info Block-->
+                                    <div class="info-block">
+                                        <div class="icon-box">
+                                            <span class="icon">
+                                                <img src="{% static 'food/images/icons/icon-message-1.png' %}" alt="">
+                                            </span>
+                                        </div>
+                                        <strong>Visit The Office</strong>
+                                        <div class="info-text">2-39, Pratham Square, Sahakari Jin Road, Himmatnagar,Gujarat-383001</div>
+                                    </div>
+                                    <!--Info Block-->
+                                    <div class="info-block">
+                                        <div class="icon-box">
+                                            <span class="icon">
+                                                <img src="{% static 'food/images/icons/icon-call-1.png' %}" alt="">
+                                            </span>
+                                        </div>
+                                        <strong>Phone Inquiry</strong>
+                                        <div class="info-text">
+                                            <a href="tel:(222)-303-4500">+91 9023267933</a>
+                                        </div>
+                                    </div>
+                                    <!--Info Block-->
+                                    <div class="info-block">
+                                        <div class="icon-box">
+                                            <span class="icon">
+                                                <img src="{% static 'food/images/icons/icon-mail-1.png' %}" alt="">
+                                            </span>
+                                        </div>
+                                        <strong>Send Email</strong>
+                                        <div class="info-text">
+                                            <a href="info@4itsol.com">info@4itsol.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="big-column col-lg-6 col-md-7 col-sm-12">
+                            <div class="row clearfix">
+                                <!--Column-->
+                                <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget">
+                                        <div class="widget-title">
+                                            <h3>Payent Methods</h3>
+                                        </div>
+                                        <div class="widget-content" style="justify-content: space-between;">
+                                           <img src="{% static 'food/images/visa.jpg' %}" alt="" style="width: 50px;height: 39px;border-radius: 7px;">
+                                           <img src="{% static 'food/images/paytm.jpg' %}" alt="" style="width: 50px;height: 39px;border-radius: 7px;">
+                                           <img src="{% static 'food/images/gpay.jpg' %}" alt="" style="width: 50px;height: 39px;border-radius: 7px;">
+                                           <img src="{% static 'food/images/mastercard.webp' %}" style="width: 50px;height: 39px;border-radius: 7px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="footer-column col-lg-6 col-md-6 col-sm-12" >
+                                    <div class="footer-widget links-widget" style="float:left;">
+                                        <div class="widget-title">
+                                            <h3>Our Services</h3>
+                                        </div>
+                                        <div class="widget-content">
+                                            <ul>
+                                                <li><a href="#">Fast food delivery</a></li>
+                                                <li><a href="#">Authentic food test</a></li>
+                                                <li><a href="#">Best quality food</a></li>
+                                                <li><a href="#">Custmized food</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Column-->
+                        <div class="footer-column col-lg-3 col-md-6 col-sm-12" >
+                            <div class="footer-widget links-widget" style="float:left;">
+                                <div class="widget-title">
+                                    <h3>Useful Links</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <ul>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="#">Sitemap</a></li>
+                                        <li><a href="#">Terms & Conditions</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="auto-container">
+
+                    <div class="inner clearfix">
+                        <!--Scroll to top-->
+                        <div class="scroll-top-footer scroll-to-target" data-target="html"><span
+                                class="flaticon-arrows"></span></div>
+                        <!--Copyright-->
+                        <div class="center" style="text-align: center;">(c) 2022 <a href="#">4 IT Solutions</a> Company. All rights reserved.
+                        </div>
+                        
+                    
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+    </div>
+    <!--End pagewrapper-->
+
+    <script src="{% static 'food/js/jquery.js' %}"></script>
+    <script src="{% static 'food/js/popper.min.js' %}"></script>
+    <script src="{% static 'food/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'food/js/jquery-ui.js' %}"></script>
+<script src="{% static 'food/js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'food/js/owl.js' %}"></script>
+<script src="{% static 'food/js/appear.js' %}"></script>
+<script src="{% static 'food/js/wow.js' %}"></script>
+<script src="{% static 'food/js/scrollbar.js' %}"></script>
+<script src="{% static 'food/js/mixitup.js' %}"></script>
+<script src="{% static 'food/js/paroller.js' %}"></script>
+<script src="{% static 'food/js/element-in-view.js' %}"></script>
+<script src="{% static 'food/js/custom-script.js' %}"></script>
+    <script src="{% static 'food/js/cart.js' %}"></script>
+
+
+</body>
+
+</html> 
