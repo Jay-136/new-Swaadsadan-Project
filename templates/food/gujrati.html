@@ -20,7 +20,7 @@
                         <div class="content-box">
                             <div class="content">
                                 <div class="inner">
-                                    <h1>Gujarati</h1>
+                                    <h1>{{category_name.name}}</h1>
                                     <div class="text">For Controling Your Energy Production ullamco laboris nisut
                                         aliquips comodes consequat. Duis aute irure dolor reprehenderit.</div>
                                     <form class="search">
@@ -39,49 +39,30 @@
 
         <div class="wrapper">
             <div class="title">
-                <h4>Gujarati Menu</h4>
+                <h4>{{category_name.name}} Menu</h4>
             </div>
             <div class="menu">
                 {% for prod in prods %}
-                <div class="single-menu">
-                    <img src="{{prod.img.url}}" alt="">
-                    <div class="menu-content">
-                        <h4>{{prod.name}}</h4>
-                        <span>₹ {{prod.price}}</span>
-                        <p>{{prod.desc}}</p>
-                        <span>
-                            <p><button type="submit" id="pr{{prod.id}}" class="btn btn-outline-danger cart">Add To Cart</button></p>
-                        </span>
-                        
+
+                    <div class="single-menu">
+                        <img src="{{prod.img.url}}" alt="">
+                        <div class="menu-content">
+                            <h4>{{prod.name}}</h4>
+                            <span>₹ {{prod.price}}</span>
+                            <p>{{prod.desc}}</p>
+                                <form action="{% url 'cartView' %}" method="post">
+                                    {% csrf_token %}
+                                    <span>
+                                        <input type="hidden" value="{{prod.id}}" name="pid">
+                                        <input type="hidden" value="1" name="qty">
+                                        <p><button type="submit" class="btn btn-outline-danger ">Add To Cart</button></p>
+                                    </span>
+                                </form>
+                            
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
+
+                    {% endfor %}
             </div>
         </div>
 {% endblock %}
-{% block js %}
-<script>
-    console.log('working');
-    if(localStorage.getItem('cart') == null){
-        var cart = {};
-    }
-    else
-    {
-        cart = JSON.parse(localStorage.getItem('cart'));
-    }
-    $('.cart').click(function(){
-        console.log('clicked');
-        var idstr = this.id.toString();
-        console.log(idstr);
-        if (cart[idstr] != undefined){
-            cart[idstr] = cart[idstr] + 1;
-        }
-        else{
-            cart[idstr] = 1;
-        }
-        console.log(cart);
-        localStorage.setItem('cart',JSON.stringify(cart));
-        document.getElementById('cart').innerHTML = object.keys(cart).length;
-    });
-</script>
-{% endblock  %}

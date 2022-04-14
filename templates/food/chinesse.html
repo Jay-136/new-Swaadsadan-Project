@@ -37,16 +37,16 @@
 
         <div class="wrapper">
             <div class="title">
-                <h4>Chinesse Menu</h4>
+                <h4>{{category_name.name}} Menu</h4>
             </div>
             <div class="menu">
-                {% for pprod in pprods %}
+                {% for prod in prods %}
                 <div class="single-menu">
-                    <img src="{{pprod.img.url}}" alt="">
+                    <img src="{{prod.img.url}}" alt="">
                     <div class="menu-content">
-                        <h4>{{pprod.name}}</h4>
-                        <span>₹ {{pprod.price}}</span>
-                        <p>{{pprod.desc}}</p>
+                        <h4>{{prod.name}}</h4>
+                        <span>₹ {{prod.price}}</span>
+                        <p>{{prod.desc}}</p>
                         <span>
                             <p><button type="submit" class="btn btn-outline-danger">Add To Cart</button></p>
                         </span>

@@ -51,7 +51,7 @@
                             <!--Social-->
                             <div class="social">
                                 <ul class="social-links clearfix">
-                                    <li><a href="/cartView">cart(<span id="cart">0</span>)</i></span></a></li>
+                                    <li><a href="/cartView" style="color:black;">cart(<span id="cart">0</span>)</i></span></a></li>
 
                                 </ul>
                             </div>
@@ -64,32 +64,32 @@
                                 <nav class="main-menu navbar-expand-md navbar-light">
                                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                         <ul class="navigation clearfix">
-                                            <li><a href="/authentic">Authentic Food</a>
+                                            <li><a href="/authentic" style="color:black;">Authentic Food</a>
 
                                             </li>
-                                            <li class="dropdown"><a href="about.html">Restaurants</a>
+                                            <li class="dropdown"><a href="about.html" style="color:black;" >Restaurants</a>
                                             </li>
 
                                             <li class="dropdown">
                                                 {% if user.is_authenticated %}
                                                 <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="/loggout">Logout</a>
+                                                <a class="dropdown-item" href="/loggout" style="color:black;" >Logout</a>
     
                                                 </div>
                                                 {% else %}
-                                                <a href="/restaurantLogin">Add Restaurant</a>
+                                                <a href="/restaurantLogin" style="color:black;">Add Restaurant</a>
                                                 {% endif %}
                                             </li>
                                             <li class="dropdown">
                                                 {% if user.is_authenticated %}
                                                 <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="/loggout">Logout</a>
+                                                <a class="dropdown-item" href="/loggout" style="color:black;">Logout</a>
     
                                                 </div>
                                                 {% else %}
-                                                <a href="/login">Log in</a>
+                                                <a href="/login" style="color:black;">Log in</a>
 
                                                 {% endif %}
                                             </li>
@@ -135,7 +135,7 @@
                     <!-- Social Links -->
                     <div class="social-links">
                         <ul class="clearfix">
-                            <li><a href="/cartView"><span>cart( <span id="cart">0</span> )</span></a></li>
+                            <li><a href="/cartView" style="color:black;"><span>cart( <span id="cart">0</span> )</span></a></li>
 
                         </ul>
                     </div>
@@ -290,7 +290,8 @@
 <script src="{% static 'food/js/paroller.js' %}"></script>
 <script src="{% static 'food/js/element-in-view.js' %}"></script>
 <script src="{% static 'food/js/custom-script.js' %}"></script>
-{% block js %}{% endblock %}
+<script src="{% static 'food/js/cart.js' %}"></script>
+
 
 </body>
 

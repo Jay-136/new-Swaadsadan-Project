@@ -1,7 +1,6 @@
-
-from django.http import HttpResponse
-from food.models import Gujproduct,Southjproduct,Punjabijproduct,Rajsthaniproduct,Indianstreetproduct,Chinesseproduct
-from django.shortcuts import render,redirect
+from django.utils.datastructures import MultiValueDictKeyError
+from food.models import Category,Product,Cart
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -82,31 +81,68 @@ def loggout(request):
     return redirect("index")
 
 def authentic(request):
-    return render(request,"food/authentic.html")
+    category = Category.objects.all()
+    return render(request,"food/authentic.html",{'category' : category})
 
-def gujProductView(request):
-    prods = Gujproduct.objects.all()
-    return render(request, "food/gujrati.html", {'prods' :  prods})
+def gujProductView(request,slug):
+    if(Category.objects.filter(slug=slug)):
+        prods = Product.objects.filter(category__slug=slug)
+        category_name = Category.objects.filter(slug=slug).first()
+    return render(request, "food/gujrati.html", {'prods' :  prods,'category_name':category_name})
 
-def southProduct(request):
-    sprods = Southjproduct.objects.all()
-    return render(request, "food/south.html", {'sprods' :  sprods})
+def southProduct(request,slug):
+    if(Category.objects.filter(slug=slug)):
+        prods = Product.objects.filter(category__slug=slug)
+        category_name = Category.objects.filter(slug=slug).first()
+    return render(request, "food/south.html", {'prods' :  prods,'category_name':category_name})
 
-def punjabiProduct(request):
-    pprods = Punjabijproduct.objects.all()
-    return render(request, "food/punjabi.html", {'pprods' :  pprods})
+def punjabiProduct(request,slug):
+    if(Category.objects.filter(slug=slug)):
+        prods = Product.objects.filter(category__slug=slug)
+        category_name = Category.objects.filter(slug=slug).first()
+    return render(request, "food/punjabi.html", {'prods' :  prods,'category_name':category_name})
 
-def rajsthaniProduct(request):
-    pprods = Rajsthaniproduct.objects.all()
-    return render(request, "food/rajsthani.html", {'pprods' :  pprods})
+def rajsthaniProduct(request,slug):
+    if(Category.objects.filter(slug=slug)):
+        prods = Product.objects.filter(category__slug=slug)
+        category_name = Category.objects.filter(slug=slug).first()
+    return render(request, "food/rajsthani.html", {'prods' :  prods,'category_name':category_name})
 
-def indianStreetProduct(request):
-    pprods = Indianstreetproduct.objects.all()
-    return render(request, "food/indian-street-food.html", {'pprods' :  pprods})
+def indianStreetProduct(request,slug):
+    if(Category.objects.filter(slug=slug)):
+        prods = Product.objects.filter(category__slug=slug)
+        category_name = Category.objects.filter(slug=slug).first()
+    return render(request, "food/indian-street-food.html", {'prods' :  prods,'category_name':category_name})
 
-def chinesseProduct(request):
-    pprods = Chinesseproduct.objects.all()
-    return render(request, "food/chinesse.html", {'pprods' :  pprods})
+def chinesseProduct(request,slug):
+    if(Category.objects.filter(slug=slug)):
+        prods = Product.objects.filter(category__slug=slug)
+        category_name = Category.objects.filter(slug=slug).first()
+    return render(request, "food/chinesse.html", {'prods' :  prods,'category_name':category_name})
 
 def cartView(request):
-    return render(request,'food/cart.html')
+    context={}
+    items =  Cart.objects.filter(user__id=request.user.id,status=False)
+    context['items'] = items
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            print(request.POST)
+            try:
+                pid = request.POST['pid']
+            except MultiValueDictKeyError:
+                pid = False
+            qty = request.POST['qty']
+            is_exist = Cart.objects.filter(product__id=pid,user__id=request.user.id,status=False)
+            if len(is_exist)>0:
+                context["msz"] = "Item Already Exists in your Cart"
+                context["cls"] = "alert alert-warning"
+            else:
+                product = get_object_or_404(Product,id=pid)
+                usr = get_object_or_404(User,id=request.user.id)
+                c = Cart(user=usr,product=product,quantity=qty)
+                c.save()
+                context['msz'] = "{} Added in Your Cart".format(product.name)
+                context["cls"] = "alert alert-success"
+    else:
+        context["status"] = "Please Login First to View Your Cart"
+    return render(request,"food/cart.html",context)

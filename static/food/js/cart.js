@@ -1,45 +1,4 @@
-// var row = `<div class="row">
-// <div class="row main align-items-center">
-//     <div class="col-2"><img class="img-fluid" src=""></div>
-//     <div class="col">
-//         <div class="row text-muted">Shirt</div>
-//         <div class="row">Cotton T-shirt</div>
-//     </div>
-//     <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-//     <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
-// </div>
-// </div>`;
-const cartdata = `{
-    "total-amount": 370,
-    "delivery-amount": 20,
-    "items": [ 
-        {
-            "item-name":"dal-dhoKli",
-            "img-link":"images/Gujarati/dal-dhokli.jpg",
-            "description":"items ",
-            "price":120,
-            "quantity":1
 
-        },
-        {
-            "item-name":"dhokla",
-            "img-link":"images/Gujarati/dhokla.jpg",
-            "description":"items ",
-            "price":100,
-            "quantity":1
-
-        },
-        {
-            "item-name":"fafda",
-            "img-link":"images/Gujarati/fafda.jpg",
-            "description":"items ",
-            "price":150,
-            "quantity":1
-
-        }
-    ]
-}`;
-var cartc;
 
 $(function () {
 

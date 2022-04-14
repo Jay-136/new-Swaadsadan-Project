@@ -13,7 +13,7 @@
                 
                 <!-- Slide Item -->
                 <div class="slide-item">
-                    <div class="image-layer" style="background-image:url('{% static 'food/images//banner/south-banner.jpg' %}')"></div>
+                    {% comment %} <div class="image-layer" style="background-image:url('{% static 'food/images/banner/south-banner.jpg' %}')"></div> {% endcomment %}
                     
                     <div class="auto-container">
                         <div class="content-box">
@@ -35,16 +35,16 @@
         <!--End Banner Section -->
         <div class="wrapper">
             <div class="title">
-                <h4>South Menu</h4>
+                <h4>{{category_name.name}} Menu</h4>
             </div>
             <div class="menu">
-                {% for sprod in sprods %}
+                {% for prod in prods %}
                 <div class="single-menu">
-                    <img src="{{sprod.img.url}}" alt="">
+                    <img src="{{prod.img.url}}" alt="">
                     <div class="menu-content">
-                        <h4>{{sprod.name}}</h4>
-                        <span>₹ {{sprod.price}}</span>
-                        <p>{{sprod.desc}}</p>
+                        <h4>{{prod.name}}</h4>
+                        <span>₹ {{prod.price}}</span>
+                        <p>{{prod.desc}}</p>
                         <span>
                             <p><button type="submit" class="btn btn-outline-danger">Add To Cart</button></p>
                         </span>

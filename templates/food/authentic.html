@@ -81,109 +81,31 @@
             <h2>Authentic Food</h2>
             
         </div>
-
+        
         <div class="row clearfix">
             <!--Service Block-->
+            {% for c in category %}
+
+
             <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0ms"  data-wow-duration="2000ms">
+
                 <div class="inner-box">
                     <div class="image-box">
-                        <figure class="image"><img src="{% static 'food/images/gujrati.jpg' %}" alt=""></figure>
+                        <figure class="image"><img src="{{c.img.url}}" alt=""></figure>
                         
                     </div>
                     <div class="title-box">
                         <div class="title-inner">
                             <!-- <div class="icon"><span class="flaticon-settings"></span></div> -->
-                            <h3><a href="/gujProductView">Gujarati</a></h3>
+                            <h3><a href="{% url 'gujProductView' c.slug %}">{{c.name}}</a></h3>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--Service Block-->
-            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="300ms"  data-wow-duration="2000ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><img src="{% static 'food/images/South2.jpg' %}" alt=""></figure>
-                        
-                    </div>
-                    <div class="title-box">
-                        <div class="title-inner">
-                            <!-- <div class="icon"><span><img src="images/south.ico" alt=""></span></div> -->
-                            <h3><a href="/southProduct">South Indian</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--Service Block-->
-            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms"  data-wow-duration="2000ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><img src="{% static 'food/images/punjabi.jpg' %}" alt=""></figure>
-                       
-                    </div>
-                    <div class="title-box">
-                        <div class="title-inner">
-                            <!-- <div class="icon"><span class="flaticon-solar-energy-4"></span></div> -->
-                            <h3><a href="/punjabiProduct">Punjabi</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--Service Block-->
-            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0ms"  data-wow-duration="2000ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><img src="{% static 'food/images/Rajsthani1.jpg' %}" alt=""></figure>
-                        
-                    </div>
-                    <div class="title-box">
-                        <div class="title-inner">
-                            <!-- <div class="icon"><span class="flaticon-water-drop"></span></div> -->
-                            <h3><a href="/rajsthaniProduct">Rajasthani</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--Service Block-->
-            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="300ms"  data-wow-duration="2000ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><img src="{% static 'food/images/indian-street-food.jpg' %}" alt=""></figure>
-                        
-                    </div>
-                    <div class="title-box">
-                        <div class="title-inner">
-                            <!-- <div class="icon"><span class="flaticon-save"></span></div> -->
-                            <h3><a href="/indianStreetProduct">Indian Street Food</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--Service Block-->
-            <div class="service-block-five col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms"  data-wow-duration="2000ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><img src="{% static 'food/images/chinesse.jpg' %}" alt=""></figure>
-                        
-                    </div>
-                    <div class="title-box">
-                        <div class="title-inner">
-                            <!-- <div class="icon"><span class="flaticon-chimney-1"></span></div> -->
-                            <h3><a href="/chinesseProduct">Chaineese</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
-
-        
-
- 
+            
+            <!--Service Block-->
 </section>
 {% endblock %}
 
