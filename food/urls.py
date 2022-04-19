@@ -17,6 +17,8 @@ urlpatterns = [
     path('restaurantLogin/',views.restaurantLogin,name='restaurantLogin'),
     path('restaurantReg/',views.restaurantReg,name='restaurantReg'),
     path('cartView/',views.cartView,name='cartView'),
+    path('get_cart_data',views.get_cart_data,name='get_cart_data'),
+    path('change_quan',views.change_quan,name='change_quan'),
 
 ]
 

@@ -132,11 +132,11 @@ select {
 }
 
 input {
-    border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1vh;
-    margin-bottom: 4vh;
+    {% comment %} border: 1px solid rgba(0, 0, 0, 0.137); {% endcomment %}
+    padding: 0vh;
+    margin-bottom: 1vh;
     outline: none;
-    width: 100%;
+    width: 11%;
     background-color: rgb(247, 247, 247)
 }
 
@@ -184,17 +184,17 @@ a:hover {
     background-position-x: 95%;
     background-position-y: center
 }
-.qtybtn{
-    width: 15px;
-    height: 20px;
-    margin-left: 5px;
+#qtybtn{
+    width: 25px;
+    height: 100px;
+    margin-left: 10px;
     margin-right: 5px;
 }
 .qty{
-   min-width: 30px;
+   min-width: 100px;
    padding:3px 10px; 
 
-}
+} 
 </style>
 <br>
 <br>
@@ -221,7 +221,7 @@ a:hover {
                         <h4><b>Shopping Cart</b></h4>
                         {% endif %}
                     </div>
-                    <div class="col align-self-center text-right text-muted">3 items</div>
+                    <div class="col align-self-center text-right text-muted" id="quantity">3 items</div>
                 </div>
             </div>
             {% if msz %}
@@ -229,30 +229,18 @@ a:hover {
             {% endif %}
             {% for i in items %}
             <div class="row">
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="/media/{{i.product.img}}" alt='img'></div>
+                <div class="row main align-items-center" id="row{{i.id}}">
+                    <div class="col-2"><img class="img-fluid" src="/media/{{i.product.img}}" alt='img' style="height: 100%;width: 100%;"></div>
                     <div class="col">
                         <div class="row text-muted">{{i.product.name}}</div>
                         <div class="row">{{i.product.desc}}</div>
                     </div>
-                    <div class="col"> <button class="qtybtn" onclick=qtym(`+index.toString()+`)>-</button><span class="border qty"  id="qty-`+index.toString()+`" >{{i.product.quantity}}</span><button class="qtybtn" onclick=qtyp(`+index.toString()+`)>+</button></div>
-                    <div class="col">&#8377; <span id="price-`+index.toString()+`">{{i.product.price}}</span> <button class="close" onclick="deleteitem(this)" id="rm-`+index.toString()+`">&#10005;</button></div>
+                    <div class="col"> <button onclick="change_quan('{{i.id}}','minus')" style="width:15px; margin:5px;">-</button><input type="tail" value="{{i.quantity}}" id="cart{{i.id}}" style="text:center"><button  onclick="change_quan('{{i.id}}','plus')" style="width:15px; margin:5px;">+</button></div>
+                    <div class="col">&#8377; <span>{{i.product.price}}</span> <button onclick="remove_cart('{{i.id}}')" class="close">&#10005;</button></div>
                 </div>
             </div>
             {% endfor %}
-            {% comment %} <div class="item-column">
-                <div class="row main align-items-center">
-                    
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
-                    <div class="col">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
-                    </div>
-                    <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                    <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
-                </div>
-            </div> {% endcomment %}
-                    <div class="back-to-shop"><a href="/authentic">&leftarrow;</a><span class="text-muted">Back to Menu</span>
+                <div class="back-to-shop"><a href="/authentic">&leftarrow;</a><span class="text-muted">Back to Menu</span>
                     </div>
                 </div>
                 <div class="col-md-4 summary">
@@ -261,18 +249,18 @@ a:hover {
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col" style="padding-left:0;">ITEMS 3</div>
-                        <div class="col text-right" id="subtotal-amount">&#8377; 132.00</div>
+                        <div class="col" style="padding-left:0;">SUBTOTAL</div>
+                        <div class="col text-right" id="item_total"></div>
                     </div>
                     <form>
-                        <p>SHIPPING</p> <select>
-                            <option class="text-muted" id="delivery-amount">Standard-Delivery- &#8377;5.00</option>
-                        </select>
-                        <p>GIVE CODE</p> <input id="code" placeholder="Enter your code">
+                        <p>SHIPPING</p> 
+                            <p class="text-muted" id="delivery-amount">Standard-Delivery- &#8377;20</p>
+                        
+                        <p>GIVE CODE</p> <p id="code" placeholder="Enter your code"></p>
                     </form>
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col">TOTAL PRICE</div>
-                        <div class="col text-right" id="total-amount">&#8377; 137.00</div>
+                        <div class="col text-right" id="grand_total" >&#8377;</div>
                     </div> <button class="btn">CHECKOUT</button>
                 </div>
             </div>
@@ -280,6 +268,61 @@ a:hover {
         <br>
         <br>
         <br>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            function grandTotal(){
+                $.ajax({
+                    url:"{% url 'get_cart_data' %}",
+                    type:"get",
+                    success:function(data){
+                        $("#item_total").html("&#8377;"+data.total);
+                        $("#quantity").html(data.quan+" Items");
+                        $("#grand_total").html("&#8377;"+(20+data.total)); 
+                    }
+                })
+            }
+            grandTotal()
+            
+            function change_quan(id,action){
+                let old = $('#cart'+id).val();
+                quan = 0
+                if(action=='plus'){
+                    quan += parseInt(old)+1
+                }else{
+                    quan += parseInt(old)-1
+                }
+                $('#cart'+id).val(quan);
+                
+                $.ajax({
+                    url:"{% url 'change_quan' %}",
+                    type:"get",
+                    data:{cid:id, quantity:quan},
+                    success:function(data){
+                        grandTotal();
+                        if(data==0){
+                            remove_cart(id);
+                        }
+                    }
+                })
+                
+                
+            }
+            
+            function remove_cart(id){
+                $.ajax({
+                    url:"{% url 'change_quan' %}",
+                    data:{delete_cart:id},
+                    success:function(data){
+                        grand_total();
+                        $("#row"+id).hide();
+                    }
+                })
+            }
+            
+            
+        </script>
+
         
         {% endif %}
         {% endif %}

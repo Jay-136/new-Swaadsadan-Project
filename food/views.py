@@ -1,3 +1,5 @@
+from telnetlib import STATUS
+from django.http import HttpResponse, JsonResponse
 from django.utils.datastructures import MultiValueDictKeyError
 from food.models import Category,Product,Cart
 from django.shortcuts import render,redirect,get_object_or_404
@@ -126,7 +128,6 @@ def cartView(request):
     context['items'] = items
     if request.user.is_authenticated:
         if request.method == "POST":
-            print(request.POST)
             try:
                 pid = request.POST['pid']
             except MultiValueDictKeyError:
@@ -146,3 +147,32 @@ def cartView(request):
     else:
         context["status"] = "Please Login First to View Your Cart"
     return render(request,"food/cart.html",context)
+
+
+def get_cart_data(request):
+    items = Cart.objects.filter(user__id=request.user.id,status=False)
+    total = 0
+    quantity = 0
+    for i in items:
+        total += (i.product.price)*i.quantity
+        quantity += i.quantity
+
+    res = {
+        "total":total,"quan":quantity,
+    }
+    return JsonResponse(res)
+
+def change_quan(request):
+    if "quantity" in request.GET:
+        cid = request.GET["cid"]
+        qty = request.GET["quantity"]
+        cart_obj = get_object_or_404(Cart,id=cid)
+        cart_obj.quantity = qty
+        cart_obj.save()
+        return HttpResponse(cart_obj.quantity)
+    
+    if "delete_cart" in request.GET:
+        id = request.GET["delete_cart"]
+        cart_obj = get_object_or_404(Cart,id=id)
+        cart_obj.delete()
+        return HttpResponse(1)
