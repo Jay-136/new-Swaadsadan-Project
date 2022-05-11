@@ -1,5 +1,5 @@
 from django.contrib import admin
-from food.models import Product,Category,Cart
+from food.models import OrderItem, Product,Category,Cart,Order,Profile
 from atexit import register
 
 # Register your models here.
@@ -14,3 +14,9 @@ from atexit import register
 admin.site.register(Product)
 admin.site.register(Category)
 admin.site.register(Cart)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(Profile)
+
+
+

@@ -1,6 +1,6 @@
 {% extends 'food/base.html' %}
-{% load static %}
-{% static 'images' as baseURL %}
+
+
 
     {% block title %}Swaad Sadan-Gujrati{% endblock title %}
     {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -14,7 +14,7 @@
 
                 <!-- Slide Item -->
                 <div class="slide-item">
-                    <div class="image-layer" style="background-image:url('{% static 'food/images/banner/gujarati-banner.jpg' %}')"></div>
+                    <div class="image-layer" style="background-image: url( '{{category_img.banner_img.url}} ');"></div>
 
                     <div class="auto-container">
                         <div class="content-box">

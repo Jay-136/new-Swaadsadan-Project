@@ -1,17 +1,46 @@
-{% extends 'food/base.html' %}
+{% extends 'food/based.html' %}
 {% load static %}
     {% block title %}Swaad Sadan-Login{% endblock title %}
     <link rel="stylesheet" href="{% static 'food/css/bootstrap-5.css' %}">
     
-    {% block content %}
-    
-    <br>
-    <br>
 
+
+    {% block content %}
+    <style>
+.container{
+    position: relative;
+    padding:30px 30px 30px 30px;
     
-    <section class="vh-100">
-        <div class="container-fluid h-custom">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+}
+        .jumbotron{
+            position: relative;
+            padding:2rem;
+            margin-top:38px;
+            margin-bottom:100px;
+            border-radius:25px;
+            background-color:whitesmoke;         
+            color:black;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;        }
+body{
+    background-color: #9AA5B1;
+}
+{% comment %} html {
+    height: 100%;
+  } {% endcomment %}
+.form-control-lg{
+    border:2px solid #9AA5B1;
+    border-radius:12px;
+}
+
+    </style>
+    <br>
+    <br>
+    <div class="container">
+        
+        <div class="jumbotron" >
+            <section class="vh-10">
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-80">
                 <div class="col-md-9 col-lg-6 col-xl-5">
                     <img src="{% static 'food/images/login-2.svg' %}"
                     class="img-fluid" alt="Sample image">
@@ -25,7 +54,7 @@
                         <div class="form-outline mb-4">
                             <label class="form-label" for="username">Username</label>
                             <input type="" id="loginusername" name="loginusername" class="form-control form-control-lg"
-                            placeholder="Enter a valid Username" />
+                            placeholder="Enter a valid Username"  value=""  style=""/>
                         </div>
                         
                         <!-- Password input -->
@@ -43,16 +72,16 @@
                                     Remember me
                                 </label>
                             </div>
-                            <a href="#!" class="text-body">Forgot password?</a>
+                            <a href="/reset_password" class="text-body">Forgot password?</a>
                         </div>
-
+                        
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="submit" class="btn btn-primary btn-lg"
-                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                            <button type="submit" class="btn btn-dark btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem; background-color: black;border-radius:16px;">Login</button>
                             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
                                 class="link-danger">Register</a></p>
                         </div>
-
+                        
                     </form>
                 </div>
             </div>
@@ -60,5 +89,7 @@
         
         
     </section>
-    <script src="{% static 'food/js/bootstrap-5.min.js' %}"></script>
+</div>
+</div>
+<script src="{% static 'food/js/bootstrap-5.min.js' %}"></script>
  {% endblock content %}

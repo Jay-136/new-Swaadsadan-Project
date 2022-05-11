@@ -1,75 +1,112 @@
-{% extends 'food/base.html' %}
+{% extends 'food/based.html' %}
 {% load static %}
+{% comment %} <html>
+<head> {% endcomment %}
+    <title>swaad sadan - register page</title>
+    <link rel="stylesheet" href="{% static 'food/css/bootstrap-5.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'food/css/style.css' %}">    {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap" rel="stylesheet">
+        {% block content %}
+        <style>
+            .container{
+                position: relative;
+                padding:30px 30px 30px 30px;
+                margin-top:20px;
+            }
+            .jumbotron{
+                    position: relative;
+                    padding:1rem;
+                    border-radius:25px;
+                    background-color:white;         
+                    color:black;
+                    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+                    font-family: 'Kanit', sans-serif;
+                    background-color:whitesmoke;
+                }
+            
+            body{
+                background-color: #9AA5B2;
+            }
+            html {
+                height: 100%;
+              }
+            .form-control-lg{
+                  border-radius:12px;
+                  border:2px solid #9AA5B2;
+              }
+        
+        
+        </style>
+        
 
-<title>swaad sadan - register page</title>
-<link rel="stylesheet" href="{% static 'food/css/bootstrap-5.css' %}">
-
-{% block content %}
-<br>
-<br>
-<br>
-<br>
-<br>
-        <section class="vh-100">
+        <div class="container">
+        
+            <div class="jumbotron">
+        <section class="vh-80 " >
             <div class="container-fluid h-custom">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-md-9 col-lg-6 col-xl-5">
                         <img src="{% static 'food/images/restaurants.png' %}"
-                            class="img-fluid" alt="Sample image">
+                        class="img-fluid" alt="Sample image">
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <form action="/restaurantReg/" method="POST">
+                        <form method='POST' action='/restaurantReg/'>
                             {% csrf_token %}
-                           
+                            {% comment %} {{form.as_p}}
+                            {% for fm in form%}
+                            {{fm.label_tag}} {{fm}} {{fm.errors}}
+                            {% endfor %} {% endcomment %}
+                            
                             <h1>Register</h1>
                             <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form3Example3">Restaurant Name:</label>
-                                <input type="" id="rname" name="rname" class="form-control form-control-lg"
-
-                                    placeholder="Restaurant Name" />
-
+                            <div class="form-outline mb-3">
+                                <label class="form-label" for="form3Example4">Restaurant Username:</label>
+                                <input type="" name='rname' id="form3Example4" class="form-control form-control-lg"
+                                placeholder="Enter Your Username" />
                             </div>
-    
+                            
                             <!-- Password input -->
                             <div class="form-outline mb-3">
                                 <label class="form-label" for="form3Example4">Restaurant Email:</label>
-                                <input type="email" id="rmail" name="rmail" class="form-control form-control-lg"
-
-                                    placeholder="" />
-
+                                <input type="email" id="form3Example4" name='rmail' class="form-control form-control-lg"
+                                    placeholder="Enter Your Email" />
                             </div>
                             <div class="form-outline mb-3">
-                                <label class="form-label" for="form3Example4">phone number:</label>
-                                <input type="tel" id="pnum" name="pnum" class="form-control form-control-lg"
-                                    placeholder="" />
+                                <label class="form-label" for="form3Example4">Restaurant phone number:</label>
+                                <input type="tel" id="form3Example4" name="pnum" class="form-control form-control-lg"
+                                placeholder="Enter Your Phonr Number" />
                             </div>
                             <div class="form-outline mb-3">
                                 <label class="form-label" for="form3Example4">Password:</label>
-                                <input type="password" id="pass1" name="pass1" class="form-control form-control-lg"
-                                    />
+                                <input type="password" id="form3Example4" name="pass1" class="form-control form-control-lg"
+                                placeholder="Enter your password"/>
                             </div>
                             <div class="form-outline mb-3">
                                 <label class="form-label" for="form3Example4">Confirm Password:</label>
-                                <input type="password" id="pass2" name="pass2" class="form-control form-control-lg"
-                                    />
+                                <input type="password" id="form3Example4" name="pass2" class="form-control form-control-lg"
+                                placeholder="Enter your Confirm password"/>
                             </div>
     
-                           
-    
+                            
                             <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="submit" class="btn btn-primary btn-lg"
-                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
-
-                            </div>
-    
-                        </form>
+                                <button type="submit" class="btn btn-dark btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem; border-radius:16px;">Register</button>
+                            
+                            </div>                 
+                            </form>
+                      
                     </div>
                 </div>
             </div>
             
             
         </section>
-        <script src="js/bootstrap-5.min.js"></script>
-    
-{% endblock %}
+    </div>
+    </div>
+        <script src="{% static 'food/js/bootstrap-5.min.js' %}"></script>
+        
+        {% comment %} </body>
+        </html> {% endcomment %}
+        {% endblock content %}

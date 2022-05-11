@@ -1,0 +1,93 @@
+{% extends 'food/based.html' %}
+{% load static %}
+{% static 'images' as baseURL %}
+    {% block title %}Swaad Sadan-Oder_History{% endblock title %}
+    {% comment %} <link rel="stylesheet" href="{% static 'food/css/bootstrap-5.css' %}">   {% endcomment %}
+
+    
+ {% block content %}
+ <style>
+    body{
+        background-color: #9AA5B1;
+
+    }
+ </style>
+
+
+<div class="container my-3">
+    <br>
+    <div class=" row">
+        <div class="col-md-12" >
+            <div  style=" box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; background-color:white;  margin-bottom:60px;">
+                <div class="card-header">
+                <h3 class="text-center"> <b >Order View</b> 
+                    <a href=" {% url 'order' %} " class="btn btn-warning text-white float-right"> <i class="fa fa-reply"></i> Back</a>
+                </h3>
+               </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Shipping Details</h5>
+                                <hr>
+                                <label class="mt-2">First Name:</label>
+                                <div class="border p-1">{{order.fname}}</div>
+                                <label class="mt-2">Last Name:</label>
+                                <div class="border p-1">{{order.lname}}</div>
+                                <label class="mt-2">Email:</label>
+                                <div class="border p-1">{{order.email}}</div>
+                                <label class="mt-2">Contact No:</label>
+                                <div class="border p-1">{{order.phone}}</div>
+                                <label class="mt-2" >Address:</label>
+                                <div class="border p-1">
+                                    {{order.address}},
+                                    {{order.state}},
+                                    {{order.city}}
+                                </div>
+                                <label class="mt-2">Zip:</label>
+                                <div class="border p-1">{{order.zip}}</div>
+<br>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Order Details</h5>
+                                <hr>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>Name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Image</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        {% for item in orderitem %}
+                                        <tr>
+                                            
+                                            <td>{{item.product.name}}</td>
+                                            <td>{{item.quantity}}</td>
+                                            <td>{{item.price}}</td>
+                                            <td>
+                                                <img src="\media\{{item.product.img}}"  height='100px' width="100px"  alt="product">
+                                            </td>
+
+                                        </tr>
+                                        {% endfor %}
+            
+                                    </tbody>
+                                </table>
+                                <h5><span class="float-right"> Grand Total: {{order.total_price}}</span> </h5>
+
+                                <h10>  Payment Mode: {{order.payment_mode}} </h10><br>
+                                <h11> Order Status: {{order.status}} </h11><br>
+                                <h11> Tracking No: {{order.tracking_no}} </h11>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% endblock %}
