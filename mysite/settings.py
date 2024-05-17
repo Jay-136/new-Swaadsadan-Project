@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from msilib.schema import Media
+# from msilib.schema import Media
 from pathlib import Path
 import os
 
@@ -29,7 +29,8 @@ SECRET_KEY = 'django-insecure-sb+%pc^+6l5lsrvd2b@=c)@@b83e4d-@%pn-b*ff#&$dt&0*&u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost","127.0.0.1","192.168.0.103"]
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["localhost","127.0.0.1","192.168.0.103"]
 
 
 # Application definition
@@ -142,5 +143,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'nihirpatel3431@gmail.com'
-EMAIL_HOST_PASSWORD = 'xtjvpfkvdkqinbaj'  
+EMAIL_HOST_PASSWORD = 'xtjvpfkvdkqinbaj'
 # DEFAULT_FROM_EMAIL = 'nihirpatel3431@gmail.com'

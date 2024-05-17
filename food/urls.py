@@ -33,6 +33,7 @@ urlpatterns = [
     path('proceed-to-pay/',views.razorpaycheck),
     path('order/',views.order,name='order'),
     path('orderview/<str:t_no>',views.orderview,name='orderview'),
+    path('delete_order/<str:t_no>/',views.deleteOrder,name='delete_order'),
 ]
 
 

@@ -43,24 +43,7 @@
                 <div class="header-upper">
                     <div class="auto-container">
                         <div class="inner clearfix">
-                            <!--Logo-->
-                            {% comment %} <div class="logo-box">
-                                <div class="logo"><a href="index.html" title="Swaadsadan"><img
-                                            src="static\food\images\icons\logo1.svg" alt="Swaadsadan"
-                                            title="Swaadsadan"></a></div>
-                            </div> {% endcomment %}
-
-                            <!--Social-->
-                            {% comment %} <div class="social">
-                                <ul class="social-links clearfix">
-                                    <li> 
-                                        <a href="/cartView" style="color:black;">cart
-                                        <span class="badge badge-info">{{request.items.quantity.keys}}</span>
-                                        <span class="sr-only">(current)</span></span></a>
-                                    </li>
-
-                                </ul>
-                            </div> {% endcomment %}
+                            
 
                             <div class="nav-outer clearfix">
                                 <!--Mobile Navigation Toggler-->
@@ -75,7 +58,7 @@
                                             <li><a href="/authentic" style="color:black;">Authentic Food</a>
 
                                             </li>
-                                            <li class="dropdown"><a href="about.html" style="color:black;" >Restaurants</a>
+                                            <li class="dropdown"><a href="{% url 'index'  %}" style="color:black;" >Restaurants</a>
                                             </li>
 
                                             <li class="dropdown">
@@ -128,7 +111,7 @@
                 <div class="auto-container clearfix">
                     <!--Logo-->
                     <div class="logo pull-left">
-                        <a href="index.html" title=""><img src="static/food/images/icons/logo1.svg" alt="fyfyufy" title="" style="height:50px"></a>
+                        <a href="index.html" title=""><img src="{% static 'food/images/icons/logo1.svg' %}" alt="fyfyufy" title="" style="height:50px"></a>
                     </div>
                     <!--Right Col-->
                     <div class="pull-right">

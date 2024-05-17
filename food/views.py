@@ -278,7 +278,7 @@ def placeOrder(request):
 
             neworder.total_price = cart_total_price
 
-            trackno = 'Patel'+str(random.randint(1111111,9999999)) 
+            trackno = 'patel'+str(random.randint(1111111,9999999)) 
             while Order.objects.filter(tracking_no = trackno) is None:
                 trackno = 'Patel'+str(random.randint(1111111,9999999)) 
         
@@ -329,3 +329,6 @@ def orderview(request,t_no):
     context = {'order':order,'orderitem':orderitem}
     return render(request,"food/orderview.html",context)
 
+def deleteOrder(request,t_no):
+    orders = Order.objects.filter(tracking_no=t_no).delete()
+    return render(request,"food/index.html",{'orders':orders})
